@@ -1,6 +1,6 @@
 body {
   margin: 5px;
-  background: #FBF9F6;
+  background: #f4efea;
   font-family: sans-serif;
   color: #1C1C1C;
 }
@@ -34,9 +34,11 @@ nav a {
   padding-bottom: 20px; 
 }
 .brain .card {
-  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(headerimg.jpg);
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(images/brands/special/main-hero.jpg);
   background-size: cover;
   background-position: center;
+  justify-content: stretch;
+  align-items: center;
   color: white; 
   border: none;
   padding: 20px;
@@ -51,6 +53,8 @@ nav a {
 .information .card {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: stretch;
   height: 100%;
 }
 .information .card img {
@@ -75,8 +79,100 @@ footer {
   border-top: 1px solid #ccc;
   padding: 15px 20px;
 }
+
 footer img {
-  width: 60px;
+  width: 20%;
+}
+
+nav a:hover {
+    text-shadow: 2px 2px 3px #2a2a2a;
+    font-size: larger;
+    text-decoration: underline;
+}
+
+a:active{
+    color: goldenrod;
+    
+}
+
+.card:hover {
+    box-shadow: 5px 5px 5px #2a2a2a;
+}
+
+h1 {
+    text-decoration: underline solid;
+    font-family: 'Playfair Display', serif; 
+    font-weight: 600; 
+    letter-spacing: 0.5px;
+}
+
+.hero ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 30px;
+  list-style-type: none;
+  padding: auto;
+  text-decoration: underline solid;
+  color: goldenrod;
+}
+
+.hero {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(images/brands/necklace/thefreedom-feather.jpg);
+  background-size: cover;
+  background-position: center;
+  color: white;
+  border: none;
+  padding: 20px;
+}
+
+.container {
+  padding: 5px 5px 5px 5px;
+}
+
+.premier {
+  color: black;
+}
+
+.seconde, .third, .fourth, .fifth, .sixth {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  justify-content: stretch;
+  padding-top: 15px;
+}
+
+.between {
+  padding: 20px 20px 20px 20px;
+}
+
+.element {
+  height: auto;
+  aspect-ratio: 4/4;
+  padding: 7px 7px 7px 7px;
+  box-shadow: 0 0 1px #1C1C1C;
+}
+
+.element:hover {
+  box-shadow: 6px 7px 9px goldenrod;
+}
+
+.action {
+  padding: 30px 30px 30px 30px;
+}
+
+.button-action {
+  color: black;
+  background-color: wheat;
+}
+
+.button-action:hover {
+  background-color: goldenrod;
+  font-size: larger;
+  border: #1C1C1C;
+  box-shadow: 5px 5px 5px gold;
+
+
 }
 
 /* Responsive on mobile phones */
@@ -101,33 +197,5 @@ footer img {
   }
 }
 
-nav a:hover {
-    text-shadow: 2px 2px 3px #2a2a2a;
-    font-size: larger;
-    text-decoration: underline;
-}
 
-a:active{
-    color: goldenrod;
-    
-}
 
-.card:hover {
-    box-shadow: 5px 5px 5px #2a2a2a;
-}
-
-a[href="#info"] {
-    text-overflow: ellipsis;
-}
-
-h1,h3 {
-    text-decoration: underline solid;
-    font-family: 'Playfair Display', serif; 
-    font-weight: 600; 
-    letter-spacing: 0.5px;
-}
-
-p { 
-    font-family: 'Lato', sans-serif; 
-    font-weight: 300; 
-    line-height: 1.6; }
