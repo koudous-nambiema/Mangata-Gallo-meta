@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 5px;
   background: #f4efea;
@@ -42,6 +46,11 @@ nav a {
   color: white; 
   border: none;
   padding: 20px;
+}
+
+.offers {
+  justify-content: stretch;
+  align-items: center;
 }
 
 .information {
@@ -110,7 +119,7 @@ h1 {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  gap: 30px;
+ 
   list-style-type: none;
   padding: auto;
   text-decoration: underline solid;
