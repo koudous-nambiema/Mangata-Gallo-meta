@@ -117,17 +117,6 @@ h1 {
     letter-spacing: 0.5px;
 }
 
-.hero ul {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
- 
-  list-style-type: none;
-  padding: auto;
-  text-decoration: underline solid;
-  color: goldenrod;
-}
-
 .hero {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(images/brands/necklace/thefreedom-feather.jpg);
   background-size: cover;
@@ -182,9 +171,8 @@ h1 {
   .information {
     grid-template-columns: 1fr; /* 1 seule colonne sur téléphone */
   }
-
   .element {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 2fr;
   }
   
   nav {
