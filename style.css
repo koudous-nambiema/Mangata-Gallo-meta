@@ -144,15 +144,22 @@ h1,h2 {
   justify-content: stretch;
 }
 
-.seconde, .third, .fourth, .fifth, .sixth {
+.containers {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  align-items: center;
+  align-items: stretch;
   justify-content: stretch;
   padding-top: 15px;
+  gap: 20px;
 }
 
-.between {
+.restants {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.containers-between {
   padding: 20px 20px 20px 20px;
 }
 
@@ -176,18 +183,19 @@ h1,h2 {
   background-color: #2a2a2a;
 }
 
-.details {
-  padding: 15px 15px 15px 15px;
-}
-
 .item-left,.item-right {
   padding: 15px 15px 15px 15px;
 }
 .items {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  width: 100%;
   color: white;
-  background-color: black;
-  box-shadow: 2px 2px 5px whitesmoke;
+  background-color: #2a2a2a;
+  box-shadow: 2px 2px 5px #2a2a2a;
   padding: 10px 10px 10px 10px;
+  justify-content: stretch;
 }
 
 .contenir {
@@ -204,20 +212,34 @@ h1,h2 {
 }
 
 .status-status,.stock-status,.amont {
-  color: wheat;
+  color: goldenrod;
 }
 
+.buy {
+  background-color: goldenrod;
+  border-radius: 10px;
+  color: black;
+  text-shadow: 3px 3px 5px white;
+  font-weight: bold;
+  box-shadow: 3px 3px 5px wheat;
+  margin-top: auto;
+}
+
+.buy:hover {
+  font-size: large;
+  box-shadow: 3px 3px 9px white;
+}
+
+.restants {
+  padding: 15px 15px 15px 15px;
+}
 
 /* Responsive on mobile phones */
 
 @media (max-width: 768px) {
-  .information {
+  .information,.containers,.restants {
     grid-template-columns: 1fr; /* 1 seule colonne sur téléphone */
   }
-  .element {
-    grid-template-columns: 2fr 2fr;
-  }
-  
   nav {
     flex-direction: auto; /* nav verticale */
     gap: 7px;
