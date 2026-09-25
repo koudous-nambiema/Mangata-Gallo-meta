@@ -1,9 +1,17 @@
+html {
+  scroll-behavior: smooth; /*Activate the smooth scroll for all the pages*/
+}
 
 body {
   margin: 5px;
   background: #f4efea;
   font-family: sans-serif;
   color: #1C1C1C;
+}
+
+.contact-us {
+  background-color: #2a2a2a;
+  color: whitesmoke;
 }
 
 header {
@@ -234,10 +242,72 @@ h1,h2 {
   padding: 15px 15px 15px 15px;
 }
 
+.cont {
+  background-color: black;
+  color: whitesmoke;
+
+}
+
+.p-card-contact {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.additionale-info {
+  padding: 20px 20px 20px 20px;
+}
+
+.attractif-info {
+  background-image: url("images/brands/necklace/thecushion-hallopendant.jpg");
+  background-size: cover;
+  background-position: center;
+  color: black;
+  border-radius: 15px;
+}
+
+.contient {
+  padding-top: 20px 20px 20px 20px;
+}
+
+.qualification {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.quality {
+  padding: 10px 10px 10px 10px;
+}
+
+.qualification-details {
+  background-color: #1C1C1C;
+  color: goldenrod;
+}
+
+.intern {
+  padding: 7px 7px 7px 7px;
+}
+
+.attractif-contact {
+  background-color: #1C1C1C;
+  border-radius: 15px;
+}
+
+.qualification-details-cont {
+  background-color: whitesmoke;
+  color: black;
+}
+
+.disclaimer {
+font-size: smaller;
+}
+
+
 /* Responsive on mobile phones */
 
 @media (max-width: 768px) {
-  .information,.containers,.restants {
+  .information,.containers,.restants,.qualification {
     grid-template-columns: 1fr; /* 1 seule colonne sur téléphone */
   }
   nav {
