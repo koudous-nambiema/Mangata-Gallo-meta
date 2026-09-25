@@ -14,6 +14,10 @@
         <meta name="format.detection" content="telephone=yes" />
         <meta name="handheldFriendly" content="true" />
         <link rel="icone" href="#ico">
+        
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bacasime+Antique&family=Bebas+Neue&family=Diplomata&family=Iceberg&family=Kalnia:wght@100..700&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Viaoda+Libre&display=swap" rel="stylesheet">
 
     </head>
 
@@ -23,15 +27,15 @@
             <img src="images/logos/Asset 1@3x.png" class="heading" alt="products logo">
         </header>
 
-        <nav>
+        <nav class="container" id="page-start">
             <a href="index.html">HOME</a>
             <a href="product.html">PRODUCTS</a>
-            <a href="contact.html">CONTACT</a>
-            <a href="contact.html">INFO</a>
+            <a href="order.html">SHOP</a>
+            <a href="contact.html">ABOUT</a>
         </nav>
 
         <main>
-            <section class="containers-awwal">
+            <section class="container containers-awwal">
                 <div class="card rounded-6 hero-extra">
                     <div class="card-body">
                         <h1 class="title text-center">ORDER<h1>
@@ -39,9 +43,28 @@
                     <div class="card-text offers">
                         <p class="text-center">No price for luxury. Make yourself expensive. Make your partner happy</p>
                     </div>
+                    <div class="card-text heads">
+                        <h2>
+                            <a href="#eg-ring">
+                                ENGAGEMENT RINGS
+                            </a>
+                        </h2>
+                        <h2>
+                            <a href="#bracel">BRACELETS</a>
+                        </h2>
+                        <h2>
+                            <a href="#wedd-bands">WEDDING BANDS</a>
+                        </h2>
+                        <h2>
+                            <a href="#neckl">NECKLACES</a>
+                        </h2>
+                        <h2>
+                            <a href="#earr"> EARRINGS</a>
+                        </h2>
+                    </div>
                 </div>
             </section>
-            <section class="containers-between">
+            <section class="containers-between" id="eg-ring">
                 <h1 class="text-center"> ENGAGEMENT RINGS</h1>
             </section>
             <section class="container containers">
@@ -303,7 +326,7 @@
 
 
 
-            <section class="containers-between">
+            <section class="containers-between" id="bracel">
                 <h1 class="text-center"> BRACELETS</h1>
             </section>
 
@@ -502,7 +525,7 @@
 
 
 
-            <section class="containers-between">
+            <section class="containers-between" id="wedd-bands">
                 <h1 class="text-center"> WEDDING BANDS</h1>
             </section>
 
@@ -704,7 +727,7 @@
 
 
 
-            <section class="containers-between">
+            <section class="containers-between" id="neckl">
                 <h1 class="text-center">NECKLACES</h1>
             </section>
 
@@ -906,7 +929,7 @@
 
 
 
-            <section class="containers-between">
+            <section class="containers-between" id="earr">
                 <h1 class="text-center">EARRINGS</h1>
             </section>
 
@@ -1100,7 +1123,7 @@
             </section>
         </main>
 
-        <footer>
+        <footer id="page-end">
             <div>
                 <img src="images/logos/Asset 4@3x.png" alt="logo for the footer">
                 <p class="disclaimer">
@@ -1110,7 +1133,18 @@
                 </p>
             </div>
         </footer>
-
+        <a href="#page-end" class="scroll-arrow arrow-down" title="Go to bottom">
+            <svg viewBox="0 0 24 24">
+                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+            </svg>
+        </a>
+        
+        <!-- Flèche pour remonter tout en haut -->
+        <a href="#page-start" class="scroll-arrow arrow-up" title="Back to top">
+            <svg viewBox="0 0 24 24">
+                <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6 1.41 1.41z" />
+            </svg>
+        </a>
     </body>
 
 </html>

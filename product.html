@@ -14,6 +14,10 @@
         <meta name="handheldFriendly" content="true"/>
         <link rel="icone" href="#ico">
         
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bacasime+Antique&family=Bebas+Neue&family=Diplomata&family=Iceberg&family=Kalnia:wght@100..700&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Viaoda+Libre&display=swap" rel="stylesheet">
+    
     </head>
     <body>
 
@@ -21,15 +25,16 @@
             <img src="images/logos/Asset 2@3x.png" class="heading" alt="products logo">
         </header>
 
-        <nav>
+        <nav class="container" id="page-start">
             <a href="index.html">HOME</a>
             <a href="product.html">PRODUCTS</a>
-            <a href="contact.html">CONTACT</a>
-            <a href="contact.html">INFO</a>
+            <a href="order.html">SHOP</a>
+            <a href="contact.html">ABOUT</a>
         </nav>
 
+
         <main>
-            <section class="containers-premier">
+            <section class="container containers-premier">
                 <div class="card rounded-6 hero">
                     <div class="card-body">
                         <h1 class="title text-center">OUR PRODUCTS<h1>
@@ -37,12 +42,32 @@
                     <div class="card-text offers">
                         <p class="text-center">Explore our handcrafted jewelry & bespoke creations</p>
                     </div>
+                    <div class="card-text heads">
+                        <h2>
+                            <a href="#eg-ring">
+                                ENGAGEMENT RINGS
+                            </a>
+                        </h2>
+                        <h2>
+                            <a href="#bracel">BRACELETS</a>
+                        </h2>
+                        <h2>
+                            <a href="#wedd-bands">WEDDING BANDS</a>
+                        </h2>
+                        <h2>
+                            <a href="#neckl">NECKLACES</a>
+                        </h2>
+                        <h2>
+                            <a href="#earr"> EARRINGS</a>
+                        </h2>
+                    </div>
                 </div>
             </section>
-            <section class="containers-between">
+            
+            <section class="containers-between" id="eg-ring">
                 <h1 class="text-center"> ENGAGEMENT RINGS</h1>
             </section>
-            <section class="containers seconde">
+            <section class="container containers seconde">
                 <article class="engagemt-rings">
                     <img src="images/brands/engagement-ring/Engagemen-ring-the-twiceted-vow.jpg" class="img-fluid element" alt="The Twisted Vow">
                 </article>
@@ -80,7 +105,7 @@
                     <img src="images/brands/engagement-ring/noirewave-solitaire.jpg" class="img-fluid element" alt="The Noire Wave Solitaire">
                 </article>   
             </section>
-            <section class="containers-between">
+            <section class="containers-between" id="bracel">
                 <h1 class="text-center"> BRACELETS</h1>
             </section>
              <section class="container containers third">
@@ -112,7 +137,7 @@
                     <img src="images/brands/bracelets/thegolden-luxury-bracelet.jpg" class="img-fluid element" alt="The Golden Luxury Bracelet">
                 </article>
             </section>
-            <section class="containers-between">
+            <section class="containers-between" id="wedd-bands">
                 <h1 class="text-center"> WEDDING BANDS</h1>
             </section>
             <section class="container containers fourth">
@@ -144,7 +169,7 @@
                     <img src="images/brands/weddingbands/infinity-loveband.jpg" class="img-fluid element" alt="The Infinit Love Band">
                 </article>
             </section>
-            <section class="containers-between">
+            <section class="containers-between" id="neckl">
                 <h1 class="text-center"> NECKLACE</h1>
             </section>
             <section class="container containers fifth">
@@ -176,7 +201,7 @@
                     <img src="images/brands/necklace/brand-new-necklace.jpg" class="img-fluid element" alt="The New Brand Necklaces">
                 </article>
             </section>
-            <section class="containers-between">
+            <section class="containers-between" id="earr">
                 <h1 class="text-center"> EARRING</h1>
             </section>
             <section class="container containers sixth">
@@ -199,13 +224,15 @@
                     <img src="images/brands/earrings/goldenfan-earing.jpg" class="img-fluid element" alt="The Golden Fan Earring">
                 </article>
             </section>
-            <section class="action text-center">
+            <section class=" container action text-center" id="page-end">
                 <article>
                     <a href="order.html" class="btn btn-primary button-action" role="button">
                         Grab One here
                     </a>
                 </article>
             </section>
+        
+
             <footer>
                 <div>
                     <img src="images/logos/Asset 2@3x.png" alt="logo for the footer">
@@ -218,5 +245,18 @@
                 </div>
             </footer>
         </main>
+        <!-- Flèche pour aller tout en bas -->
+        <a href="#page-end" class="scroll-arrow arrow-down" title="Go to bottom">
+            <svg viewBox="0 0 24 24">
+                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+            </svg>
+        </a>
+        
+        <!-- Flèche pour remonter tout en haut -->
+        <a href="#page-start" class="scroll-arrow arrow-up" title="Back to top">
+            <svg viewBox="0 0 24 24">
+                <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6 1.41 1.41z" />
+            </svg>
+        </a>
     </body>
 </html>

@@ -20,9 +20,11 @@ header {
   padding: 25px 0;
 }
 
+
+
 .heading {
-  width: 50%;
-  max-width: 400px;
+  width: 45%;
+  max-width: 300px;
 }
 
 nav {
@@ -107,10 +109,16 @@ footer img {
 
 
 
-nav a, .button-action:hover {
+.button-action:hover {
     text-shadow: 2px 2px 3px #2a2a2a;
     font-size: larger;
     text-decoration: underline;
+}
+
+a:hover {
+  font-size: larger;
+  text-decoration: underline;
+  text-shadow: 2px 2px 5px wheat;
 }
 
 a:active{
@@ -122,12 +130,22 @@ a:active{
     box-shadow: 5px 5px 5px #2a2a2a;
 }
 
-h1,h2 {
+h1 {
     text-decoration: underline solid;
-    font-family: 'Playfair Display', serif; 
-    font-weight: 600; 
-    letter-spacing: 0.5px;
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 2.5rem;
+    letter-spacing: 2px;
 }
+
+h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-style: normal; 
+  font-weight: bolder;
+}
+
 
 .hero {
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(images/brands/necklace/thefreedom-feather.jpg);
@@ -179,7 +197,7 @@ h1,h2 {
 }
 
 .element:hover {
-  box-shadow: 6px 7px 9px goldenrod;
+  box-shadow: 6px 7px 9px #1C1C1C;
 }
 
 .action {
@@ -187,8 +205,31 @@ h1,h2 {
 }
 
 .button-action {
-  color: whitesmoke;
-  background-color: #2a2a2a;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+
+  background-color: #111111 !important;
+  color: #d4af37 !important;
+  border: 1px solid #d4af37 !important;
+  text-decoration: none !important;
+
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  padding: 12px 20px;
+  border-radius: 15px;
+
+  transition: all 0.3s ease !important;
+}
+
+.button-action:hover {
+  background-color: #d4af37 !important;
+  color: #111111 !important;
+  border-color: #d4af37 !important;
+  box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
 }
 
 .item-left,.item-right {
@@ -224,6 +265,7 @@ h1,h2 {
 }
 
 .buy {
+  position: relative;
   background-color: goldenrod;
   border-radius: 10px;
   color: black;
@@ -231,12 +273,27 @@ h1,h2 {
   font-weight: bold;
   box-shadow: 3px 3px 5px wheat;
   margin-top: auto;
+  transition: all 0.4s ease;
+
+  /*Initialisation du contour invisible*/
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 .buy:hover {
   font-size: large;
   box-shadow: 3px 3px 9px white;
+
+  background-color: black;
+
+  color: #00d2ff;
+  border-color: #00d2ff;
+  outline: 2px solid #00d2ff;
+  outline-offset: 3px;
+
 }
+
+
 
 .restants {
   padding: 15px 15px 15px 15px;
@@ -301,6 +358,84 @@ h1,h2 {
 
 .disclaimer {
 font-size: smaller;
+}
+
+/* Défilement fluide de la page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Style de la flèche : Grande, visible et neutre */
+.scroll-arrow {
+  position: fixed !important;
+  right: 15px !important; /* Collée vers la droite de l'écran */
+  width: 60px !important;  /* Taille agrandie pour une excellente visibilité */
+  height: 60px !important;
+  background-color: #111111 !important; /* Fond noir mat neutre */
+  border: 2px solid #F4EFEB !important;    /* Bordure beige crème claire très chic */
+  border-radius: 50% !important;           /* Rond parfait */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  z-index: 999999 !important;              /* Reste au-dessus de tous vos blocs */
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5); /* Ombre prononcée */
+}
+
+/* Style du symbole à l'intérieur (le SVG) */
+.scroll-arrow svg {
+  width: 40px;  /* La flèche elle-même est bien grande */
+  height: 40px;
+  fill: #F4EFEB; /* Couleur crème neutre (force la disparition du bleu) */
+  transition: fill 0.3s ease;
+}
+
+/* Position verticale de la flèche "Bas" */
+.arrow-down {
+  top: 140px !important;
+}
+
+/* Position verticale de la flèche "Haut" */
+.arrow-up {
+  bottom: 40px !important;
+}
+
+/* Effet au survol ou au clic */
+.scroll-arrow:hover {
+  background-color: #F4EFEB !important; /* Le fond devient crème */
+  border-color: #111111 !important;
+  transform: scale(1.05);
+}
+
+.scroll-arrow:hover svg {
+  fill: #111111; /* La flèche devient noire au survol */
+}
+
+a {
+  text-decoration: none;
+  color: goldenrod;
+}
+
+.heads {
+  padding: 10px 10px 10px 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: stretch;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.heads h2 {
+  font-size: small;
+  width: 35%;
+  flex: 1;
+  text-align: center;
+  padding: 1opx 5px;
+  font-size: 10px;
+  color: white !important; /* !important for erasing bootstrap effects here!! */
+  text-decoration: none;
+  
 }
 
 

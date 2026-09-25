@@ -6,17 +6,22 @@
         <link rel="stylesheet" href="style.css">
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width , initial-scale=1.0"/>
+       
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bacasime+Antique&family=Bebas+Neue&family=Diplomata&family=Iceberg&family=Kalnia:wght@100..700&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Viaoda+Libre&display=swap" rel="stylesheet">
+    
     </head>
     <body>
         <header>
             <img src="images/logos/Asset 1@3x.png" class="heading" alt="webpage logo">
         </header>
 
-        <nav>
+        <nav class="container" id="page-start">
             <a href="index.html">HOME</a>
             <a href="product.html">PRODUCTS</a>
-            <a href="contact.html">CONTACT</a>
-            <a href="contact.html">INFO</a>
+            <a href="order.html">SHOP</a>
+            <a href="contact.html">ABOUT</a>
         </nav>
 
         <main class="container">
@@ -53,7 +58,7 @@
                             <p class="card-text">
                                 Visit our private showroom in the heart of Austin, Texas. Browse our collections or book a personalized consultation with Mariana to create your bespoke jewelry in a warm and intimate setting.
                             </p>
-                            <a href="#info">Contact us</a>
+                            <a href="contact.html">Contact us</a>
                         </div>
                     </div>
                 </article>
@@ -66,13 +71,13 @@
                             <p class="card-text">
                                 Learn about the artistry behind Mangata & Gallo. From Mariana's original sketches to our master artisans hand-forging each jewel, discover the heritage and craftsmanship that define our house.
                             </p>
-                            <a href="#info">More info about us</a>
+                            <a href="contact.html">More info about us</a>
                         </div>
                     </div>
                 </article>
             </section>
         </main>
-        <footer>
+        <footer id="page-end">
             <div>
                 <img src="images/logos/Asset 2@3x.png" alt="logo for the footer">
                 <p class="disclaimer">
@@ -82,5 +87,18 @@
                 </p>
             </div>
         </footer>
+        <!-- Flèche pour aller tout en bas -->
+        <a href="#page-end" class="scroll-arrow arrow-down" title="Go to bottom">
+            <svg viewBox="0 0 24 24">
+                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+            </svg>
+        </a>
+        
+        <!-- Flèche pour remonter tout en haut -->
+        <a href="#page-start" class="scroll-arrow arrow-up" title="Back to top">
+            <svg viewBox="0 0 24 24">
+                <path d="M7.41 15.41L12 10.83l4.59 4.58L18 14l-6-6-6 6 1.41 1.41z" />
+            </svg>
+        </a>
     </body>
 </html>
