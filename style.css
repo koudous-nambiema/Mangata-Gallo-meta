@@ -438,6 +438,126 @@ a {
   
 }
 
+/* 1. Fullscreen dark overlay */
+.confirmation-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8); /* Fond noir semi-transparent */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999; /* Reste au-dessus de tout le reste de la page */
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* 2. Modal card container */
+.confirmation-modal-card {
+    background-color: #2a2a2a;
+    color: #f4efea;
+    border: 1px solid goldenrod;
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 450px;
+    width: 90%;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
+    text-align: center;
+}
+
+.confirmation-modal-card h2 {
+    color: goldenrod;
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+}
+
+.confirmation-modal-card p {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+/* 3. Action buttons inside modal */
+.modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.modal-btn {
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.modal-btn.buy-now {
+    background-color: goldenrod;
+    color: black;
+}
+
+.modal-btn.buy-now:hover {
+    background-color: #00d2ff;
+    color: black;
+    box-shadow: 0 0 10px #00d2ff;
+}
+
+.modal-btn.add-cart {
+    background-color: transparent;
+    color: goldenrod;
+    border: 1px solid goldenrod;
+}
+
+.modal-btn.add-cart:hover {
+    background-color: goldenrod;
+    color: black;
+}
+
+.modal-btn.cancel {
+    background-color: #444;
+    color: #ccc;
+}
+
+.modal-btn.cancel:hover {
+    background-color: #e63946;
+    color: white;
+}
+
+/* Smooth fade-in animation */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+
+/* Cart Icon Wrapper in Navbar */
+.cart-icon-wrapper {
+    position: relative;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    font-size: 1.4rem;
+    margin-left: 15px;
+}
+
+/* Badge count indicator */
+.cart-count {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color: goldenrod;
+    color: #000;
+    font-size: 0.75rem;
+    font-weight: bold;
+    border-radius: 50%;
+    padding: 2px 6px;
+    min-width: 18px;
+    text-align: center;
+}
+
 
 /* Responsive on mobile phones */
 
