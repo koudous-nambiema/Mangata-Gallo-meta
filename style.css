@@ -576,6 +576,29 @@ a {
   outline-offset: 1px;
 }
 
+.cart-drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6); /* Fond sombre semi-transparent */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Garantit que la modale passe au-dessus de tout le reste */
+}
+
+.cart-content-container {
+    background-color: #121212;
+    color: #ffffff;
+    padding: 24px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 450px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
 /* Responsive on mobile phones */
 
 @media (max-width: 768px) {
