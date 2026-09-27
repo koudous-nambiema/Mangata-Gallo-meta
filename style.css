@@ -558,6 +558,23 @@ a {
     text-align: center;
 }
 
+/* Style appliqué automatiquement quand button.disabled = true */
+.buy:disabled {
+    background-color: #4a4a4a !important; /* Gris foncé */
+    color: whitesmoke !important;            /* Texte effacé */
+    cursor: not-allowed !important;        /* Curseur de blocage */
+    border-color: #333333 !important;
+    box-shadow: none !important;
+    transform: none !important;            /* Annule les effets de survol/hover */
+    text-shadow: none;
+}
+.buy:disabled:hover {
+  font-size: medium;
+  box-shadow: none;
+  text-shadow: none;
+  outline: none;
+  outline-offset: 1px;
+}
 
 /* Responsive on mobile phones */
 

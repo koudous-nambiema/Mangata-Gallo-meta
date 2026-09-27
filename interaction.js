@@ -28,6 +28,7 @@ function showConfirmationModal(productData) {
     // Select buttons directly from inside modalOverlay
     const cancelButton = modalOverlay.querySelector('#btn-cancel');
     const confirmBuyButton = modalOverlay.querySelector('#btn-buy-now');
+    const addToCartButton = modalOverlay.querySelector('#btn-add-cart');
 
     // Event listener to close modal
     cancelButton.addEventListener('click', () => {
@@ -37,23 +38,62 @@ function showConfirmationModal(productData) {
     // Event listener for direct buy
     confirmBuyButton.addEventListener('click', () => {
         console.log(`Thank you for purchasing ${productData.piece}. Your order has been placed!`);
-        
+
         // Decrement stock in DOM
         if (productData.stock > 0) {
             productData.stock--;
             const stockElement = productData.card.querySelector('.stock-status');
-            stockElement.textContent = `${productData.stock} pieces left`;
+            const buyButton = productData.card.querySelector('.buy');
+
+            /*Verify immediately after decrementation*/
+            if (productData.stock === 0) {
+                stockElement.textContent = "No more pieces left";
+                buyButton.textContent = "SOLD OUT";
+                buyButton.disabled = true;
+            } else {
+                /*update the content on the card stock*/
+                stockElement.textContent = `${productData.stock} pieces left`;
+            }
         }
 
         // Close modal after buy
         modalOverlay.remove();
     });
+
+    addToCartButton.addEventListener('click',(event) => {
+        /*seak the current element added in the cart*/
+        const existingItem = cart.find(item => item.piece === productData.piece);
+        
+        /*apply some rules before update*/
+        if (existingItem) {
+            existingItem.quantity +=1;
+        } else {
+            cart.push({piece: productData.piece, price: productData.price, quantity:1})
+        }
+
+        /*select the count on the cart to get some information*/
+        const badgeElement = document.querySelector('.cart-count');
+
+        /*calculate the total quantity of all articles in the count*/
+        let totalCount =0;
+        cart.forEach(item => {totalCount += item.quantity;})
+
+        /*update the count by rewriting the new number calculated*/
+        badgeElement.textContent = totalCount;
+
+        /*close the modal overlay after the oparation*/
+        modalOverlay.remove();
+    })
 }
 
 // 2. Main Buy Buttons Listener
 const buyButtons = document.querySelectorAll('.buy');
 
 buyButtons.forEach((button) => {
+    /*before processing to anything, we need to verify the stock before.
+    If stock>0, we proceed. if not, .buy button should be desactivated*/
+
+    
     button.addEventListener('click', (event) => {
         const productCard = event.target.closest('.items');
 
@@ -78,8 +118,7 @@ buyButtons.forEach((button) => {
             stock: stock,
             card: productCard
         };
-
-        // Open modal
+        
         showConfirmationModal(productDetails);
     });
 });
