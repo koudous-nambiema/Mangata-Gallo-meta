@@ -1,13 +1,18 @@
 let cart = [];
 
-// 2. Main Buy Buttons Listener
+// Fonction pour mettre à jour le badge du panier
+function updateCartBadge() {
+    const badgeElement = document.querySelector('.cart-count');
+    if (badgeElement) {
+        const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+        badgeElement.textContent = totalCount;
+    }
+}
+
+// 2. Écouteurs sur les boutons d'achat principaux (.buy)
 const buyButtons = document.querySelectorAll('.buy');
 
 buyButtons.forEach((button) => {
-    /*before processing to anything, we need to verify the stock before.
-    If stock>0, we proceed. if not, .buy button should be desactivated*/
-
-    
     button.addEventListener('click', (event) => {
         const productCard = event.target.closest('.items');
 
@@ -25,25 +30,29 @@ buyButtons.forEach((button) => {
         const name = nameText.replace(/\s+/g, ' ').trim();
         const price = parseFloat(priceClean);
 
-        // Object containing all details to pass to the modal function
-        var productDetails = {
+        // VÉRIFICATION DU STOCK : Si stock <= 0, on stop
+        if (stock <= 0) {
+            button.disabled = true;
+            button.textContent = "SOLD OUT";
+            return;
+        }
+
+        const productDetails = {
             piece: name,
             price: price,
             stock: stock,
             card: productCard
         };
-        
+
         showConfirmationModal(productDetails);
     });
 });
 
-// 1. Function defined OUTSIDE the event listener
+// 1. Modale de confirmation
 function showConfirmationModal(productData) {
-    // Create the overlay container
     const modalOverlay = document.createElement('div');
-    modalOverlay.classList.add('confirmation-modal-overlay'); /* Add a CSS class dynamically*/
+    modalOverlay.classList.add('confirmation-modal-overlay');
 
-    // Inject dynamic HTML using productData properties
     modalOverlay.innerHTML = `
         <div class="confirmation-modal-card">
             <h2>Confirm Your Purchase</h2>
@@ -59,45 +68,47 @@ function showConfirmationModal(productData) {
         </div>
     `;
 
-    // Append to body so it displays on screen
     document.body.appendChild(modalOverlay);
 
-    // Select buttons directly from inside modalOverlay
     const cancelButton = modalOverlay.querySelector('#btn-cancel');
     const confirmBuyButton = modalOverlay.querySelector('#btn-buy-now');
     const addToCartButton = modalOverlay.querySelector('#btn-add-cart');
 
-    // Event listener to close modal
     cancelButton.addEventListener('click', () => {
         modalOverlay.remove();
     });
 
-    // Event listener for direct buy
+    // Achat direct dans la modale
     confirmBuyButton.addEventListener('click', () => {
-        console.log(`Thank you for purchasing ${productData.piece}. Your order has been placed!`);
-
-        // Decrement stock in DOM
         if (productData.stock > 0) {
             productData.stock--;
             const stockElement = productData.card.querySelector('.stock-status');
             const buyButton = productData.card.querySelector('.buy');
 
-            /*Verify immediately after decrementation*/
             if (productData.stock === 0) {
                 stockElement.textContent = "No more pieces left";
                 buyButton.textContent = "SOLD OUT";
                 buyButton.disabled = true;
             } else {
-                /*update the content on the card stock*/
                 stockElement.textContent = `${productData.stock} pieces left`;
             }
-        }
 
-        // Close modal after buy
-        modalOverlay.remove();
+            const modalCard = modalOverlay.querySelector('.confirmation-modal-card');
+            modalCard.innerHTML = `
+                <h2>Order Confirmed!</h2>
+                <p>Thank you for choosing Mangata & Gallo.</p>
+                <p>Your order for <strong>${productData.piece}</strong> has been placed.</p>
+                <button id="btn-close-success" class="modal-btn">Close</button>
+            `;
+
+            modalCard.querySelector('#btn-close-success').addEventListener('click', () => {
+                modalOverlay.remove();
+            });
+        }
     });
 
-    addToCartButton.addEventListener('click', (event) => {
+    // Ajouter au panier depuis la modale
+    addToCartButton.addEventListener('click', () => {
         const existingItem = cart.find(item => item.piece === productData.piece);
 
         if (existingItem) {
@@ -111,20 +122,18 @@ function showConfirmationModal(productData) {
             cart.push({ piece: productData.piece, price: productData.price, quantity: 1 });
         }
 
-        // calculate the total of the badge 
-
-        const badgeElement = document.querySelector('.cart-count');
-        let totalCount = 0;
-        cart.forEach(item => { totalCount += item.quantity; });
-        badgeElement.textContent = totalCount;
-
-        // close the modale
+        updateCartBadge();
         modalOverlay.remove();
     });
 }
 
-const cartContainer = document.querySelector('.cart-icon-wrapper');
+// 3. Affichage du tiroir / panneau latéral du panier
 function renderCartSidebar() {
+    const existingCart = document.querySelector('.cart-drawer-overlay');
+    if (existingCart) {
+        existingCart.remove();
+    }
+
     const cartModal = document.createElement('div');
     cartModal.classList.add('cart-drawer-overlay');
 
@@ -138,19 +147,22 @@ function renderCartSidebar() {
         `;
     } else {
         let itemsHTML = '';
-        
+
         cart.forEach(item => {
             itemsHTML += `
                 <div class="cart-item">
-                    <p>Piece: <strong>${item.piece}</strong></p>
+                    <p class="piece-name">Piece: <strong>${item.piece}</strong></p>
                     <p>Price: $${item.price}</p>
-                    <p>Quantity: ${item.quantity}</p>
+                    <div class="quantity-controls">
+                        <button class="btn-decrease" data-name="${item.piece}">-</button>
+                        <span>Quantity: ${item.quantity}</span>
+                        <button class="btn-increase" data-name="${item.piece}">+</button>
+                    </div>
                     <p>Subtotal: <strong>$${item.price * item.quantity}</strong></p>
                 </div>
             `;
         });
 
-        // Calcul du prix total global
         const grandTotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
 
         cartModal.innerHTML = `
@@ -170,25 +182,63 @@ function renderCartSidebar() {
 
     document.body.appendChild(cartModal);
 
+    // Écouteur pour fermer
     const closure = cartModal.querySelector('.close-cart');
     closure.addEventListener('click', () => {
         cartModal.remove();
     });
 
-    // Écouteur sur le bouton de commande s'il existe dans le DOM
+    // Écouteurs pour le bouton (+)
+    const increaseButtons = cartModal.querySelectorAll('.btn-increase');
+    increaseButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const pieceName = e.target.getAttribute('data-name');
+            const targetItem = cart.find(item => item.piece === pieceName);
+
+            if (targetItem) {
+                targetItem.quantity += 1;
+                updateCartBadge();
+                renderCartSidebar();
+            }
+        });
+    });
+
+    // Écouteurs pour le bouton (-)
+    const decreaseButtons = cartModal.querySelectorAll('.btn-decrease');
+    decreaseButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
+            const pieceName = e.target.getAttribute('data-name');
+            const targetItem = cart.find(item => item.piece === pieceName);
+
+            if (targetItem) {
+                targetItem.quantity -= 1;
+
+                if (targetItem.quantity <= 0) {
+                    cart = cart.filter(item => item.piece !== pieceName);
+                }
+
+                updateCartBadge();
+                renderCartSidebar();
+            }
+        });
+    });
+
+    // Écouteur pour le Checkout
     const checkoutBtn = cartModal.querySelector('.checkout-btn');
     if (checkoutBtn) {
         checkoutBtn.addEventListener('click', () => {
             alert('Order placed successfully!');
-            cart = []; // On vide le panier
-            document.querySelector('.cart-count').textContent = 0; // Reset du badge
+            cart = [];
+            updateCartBadge();
             cartModal.remove();
         });
     }
 }
-cartContainer.addEventListener('click',() => {
-    renderCartSidebar();
-})
 
-
-
+// 4. ATTACHEMENT DE L'ÉCOUTEUR SUR L'ICÔNE DU PANIER
+const cartContainer = document.querySelector('.cart-icon-wrapper');
+if (cartContainer) {
+    cartContainer.addEventListener('click', () => {
+        renderCartSidebar();
+    });
+}

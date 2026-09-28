@@ -590,13 +590,17 @@ a {
 }
 
 .cart-content-container {
-    background-color: #121212;
-    color: #ffffff;
+    background-color: #1C1C1C;
+    color: whitesmoke;
     padding: 24px;
     border-radius: 8px;
     width: 90%;
     max-width: 450px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.piece-name {
+  color: goldenrod;
 }
 
 /* Responsive on mobile phones */
